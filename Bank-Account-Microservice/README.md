@@ -1,6 +1,6 @@
 Here in this example we are creating Microservice.
 
-## Problem Statement
+# Problem Statement
 
 A bank, has defined a microservices architecture to serve its customers. A customer can open,
 manage and view its bank accounts. Also, they can transact at the bank using three different modes -
@@ -51,7 +51,7 @@ The Feign client will expose the following services of the Cheques microservice 
 Note that when a cheque is posted, after step 2 , only an entry is made to the table ChequesTable.
 No entry is made in the Accounts database which is a separate database.
 
-# Step 3
+## Step 3
 
 For a cheque to be cleared, the account must have sufficient balance. So, the Cheques microservice
 needs to get the balance of a particular account from the Accounts microservice.
@@ -93,7 +93,7 @@ dependency Hystrix. In the application.properties of the Feign client, add the f
 
 hystrix.command.default.execution.isolation.thread.timeoutInMilliseconds=4000.
 
-# Step 4
+## Step 4
 
 If a cheque transaction is successful, the Accounts microservice needs to be informed so that it can
 take appropriate action.
@@ -113,7 +113,7 @@ Here, a Java class named PostTransaction has been defined. This class defines th
 the Accounts microservice is expecting information. pt in the above code, is an object of type
 PostTransaction with the requisite values.
 
-# Step 5
+## Step 5
 
 In a similar manner, create the ATMs microservices. The Feign client will expose the following
 services of the ATMs microservice :
@@ -122,7 +122,7 @@ services of the ATMs microservice :
 
 • /atms/{accId} - GET, POST
 
-# Step 6
+## Step 6
 In a similar manner, create the NetBankings microservices. The Feign client will expose the following
 services of the NetBankings microservice :
 
