@@ -130,9 +130,9 @@ services of the NetBankings microservice :
 
 • /netbankings/{accId} - GET, POST
 
-##Lets understand about Eureka & Feign Client
+## Lets understand about Eureka & Feign Client
 
-##Spring Cloud Netflix
+## Spring Cloud Netflix
 
 Spring Cloud Netflix provides Netflix OSS integrations for Spring Boot applications using annotations
 based configuration. It helps in creating microservices instead of a monolithic application. In this
