@@ -156,11 +156,11 @@ themselves on this server. To implement a Eureka Server for using as service reg
 
 public class EurekaServerApplication {
 
-public static void main(String[] args) {
+  public static void main(String[] args) {
 
-SpringApplication.run(EurekaServerApplication.class, args);
+    SpringApplication.run(EurekaServerApplication.class, args);
 
-}
+  }
 
 }
 
@@ -168,21 +168,21 @@ SpringApplication.run(EurekaServerApplication.class, args);
 
 eureka:
 
-instance:
+  instance:
 
-hostname: localhost
+    hostname: localhost
 
-client:
+  client:
 
-serviceUrl:
+    serviceUrl:
 
-defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
 
-registerWithEureka: false
+  registerWithEureka: false
 
 server:
 
-port: 8761
+  port: 8761
 
 The Eureka server has been configured for port 8761 which is the default one for Eureka servers. The
 attribute 'registerWithEureka:false' is informing the built in Eureka Client not to register with ‘itself’
@@ -207,11 +207,11 @@ service and a client for discovery server
 
 public class EurekaClientApplication {
 
-public static void main(String[] args) {
+  public static void main(String[] args) {
 
-SpringApplication.run(EurekaServerApplication.class, args);
+   SpringApplication.run(EurekaServerApplication.class, args);
 
-}
+  }
 
 }
 
@@ -219,31 +219,31 @@ SpringApplication.run(EurekaServerApplication.class, args);
 
 spring:
 
-application:
+  application:
 
-name:spring-client001
+    name:spring-client001
 
 eureka:
 
-client:
+  client:
 
-serviceUrl:
+    serviceUrl:
 
-defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
 
-instance:
+  instance:
 
-preferIpAddress:false
+    preferIpAddress:false
 
 server:
 
-port: 2222
+  port: 2222
 
 error:
 
-whitelabel:
+  whitelabel:
 
-enabled:false
+    enabled:false
 
 The spring.application.name is the unique identifier for this service.
 The eureka.client.serviceUrl.defaultZone is the URL of the Eureka discovery server.
@@ -268,37 +268,68 @@ To enable a Feign client
 • Annotate the Spring Boot application @EnableFeignClients.
 
 @SpringBootApplication
+
 @EnableFeignClients
+
 @RestController
+
 public class MyFeignApplication {
-@Autowired
-private MyFeignClient feignClient;
-public static void main(String[] args) {
-SpringApplication.run(MyFeignApplication.class, args);
+
+  @Autowired
+
+  private MyFeignClient feignClient;
+
+    public static void main(String[] args) {
+
+      SpringApplication.run(MyFeignApplication.class, args);
+
 }
+
 @GetMapping("/getnums")
+
 public Object getNumber() {
-Object obj = feignClient.getNumber();
-return obj;
+
+  Object obj = feignClient.getNumber();
+
+  return obj;
+
 }
+
 }
+
 • Create an interface annotated with @FeignClient(“service-name”) which was autowired in
 the RestController.
+
 @FeignClient("spring-client001")
+
 public interface MyFeignClient {
-@GetMapping(value="/getNumbers")
+  
+  @GetMapping(value="/getNumbers")
+
 }
+
 Here, " spring-client001" is the Eureka client which will be used.
+
 • Configure the application.yml
+
+
 spring:
-application:
-name:spring-myfeign
+
+  application:
+
+    name:spring-myfeign
+
 eureka:
-client:
-serviceUrl:
-defaultZone: http://localhost:8761/eureka/
+  
+  client:
+
+    serviceUrl:
+
+      defaultZone: http://localhost:8761/eureka/
+
 server:
-port: 2401
+
+  port: 2401
 
 The eureka.client.serviceUrl.defaultZone is the URL of the Eureka discovery server. A client can
 access all the services at localhost:2401 which is the port of the Feign client.
