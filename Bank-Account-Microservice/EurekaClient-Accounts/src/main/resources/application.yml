@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: accounts-service
+eureka:
+  client:
+    serviceUrl: 
+      defaultZone: http://localhost:8761/eureka
+      
+server:
+  port: 2221
+  
+  error:
+    whitelabel:
+      enabled: false

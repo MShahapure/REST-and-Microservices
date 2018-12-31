@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: cheques-service
+eureka:
+  client:
+    serviceUrl: 
+      defaultZone: http://localhost:8761/eureka
+      
+server:
+  port: 2223
+  
+  error:
+    whitelabel:
+      enabled: false

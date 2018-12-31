@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: feign-client-bank
+eureka:
+  client:
+    serviceUrl: 
+      defaultZone: http://localhost:8761/eureka
+      
+server:
+  port: 2502
