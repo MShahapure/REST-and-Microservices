@@ -20,4 +20,4 @@ Tools you will need
 
 So,first we will be seeing standalone REST API for Bank application and then we break this application into Microserevices with Eureka and Feign Client.
 
-To see Microservice example plz find REST-and-Microservices-1
+To see Microservice example plz find REST-and-Microservices-2
