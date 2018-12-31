@@ -159,7 +159,6 @@ public class EurekaServerApplication {
   public static void main(String[] args) {
 
     SpringApplication.run(EurekaServerApplication.class, args);
-
   }
 
 }
@@ -167,21 +166,13 @@ public class EurekaServerApplication {
 • Configure the properties in the application.yml
 
 eureka:
-
   instance:
-
     hostname: localhost
-
   client:
-
     serviceUrl:
-
       defaultZone: http://localhost:8761/eureka/
-
   registerWithEureka: false
-
 server:
-
   port: 8761
 
 The Eureka server has been configured for port 8761 which is the default one for Eureka servers. The
