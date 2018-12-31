@@ -268,66 +268,36 @@ To enable a Feign client
 • Annotate the Spring Boot application @EnableFeignClients.
 
 @SpringBootApplication
-
 @EnableFeignClients
-
 @RestController
-
 public class MyFeignApplication {
-
 @Autowired
-
 private MyFeignClient feignClient;
-
 public static void main(String[] args) {
-
 SpringApplication.run(MyFeignApplication.class, args);
-
 }
-
 @GetMapping("/getnums")
-
 public Object getNumber() {
-
 Object obj = feignClient.getNumber();
-
 return obj;
-
 }
-
 }
-
 • Create an interface annotated with @FeignClient(“service-name”) which was autowired in
 the RestController.
-
 @FeignClient("spring-client001")
-
 public interface MyFeignClient {
-
 @GetMapping(value="/getNumbers")
-
 }
-
 Here, " spring-client001" is the Eureka client which will be used.
-
 • Configure the application.yml
-
 spring:
-
 application:
-
 name:spring-myfeign
-
 eureka:
-
 client:
-
 serviceUrl:
-
 defaultZone: http://localhost:8761/eureka/
-
 server:
-
 port: 2401
 
 The eureka.client.serviceUrl.defaultZone is the URL of the Eureka discovery server. A client can
